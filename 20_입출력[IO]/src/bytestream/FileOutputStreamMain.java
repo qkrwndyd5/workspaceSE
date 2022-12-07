@@ -1,5 +1,6 @@
 package bytestream;
 
+import java.io.File;
 import java.io.FileOutputStream;
 /*
  * <<출력스트림(OutputStream)사용방법>>
@@ -9,7 +10,7 @@ import java.io.FileOutputStream;
  * 4. 출력스트림(OutputStream)닫는다.(close) 
  */
 
-public class FileOutputMain {
+public class FileOutputStreamMain {
 
 	public static void main(String[] args) throws Exception{
 		/*
@@ -25,7 +26,7 @@ public class FileOutputMain {
 		 * 67 		-->00000000|00000000|00000000|01000011
 		 * 21483647 -->01111111|11111111|11111111|11111111
 		 */
-		FileOutputStream fos=new FileOutputStream("fileOut.dat");
+		FileOutputStream fos=new FileOutputStream(new File("src/bytestream/fileOut.dat"),true);
 		
 		fos.write(65);
 		fos.write(66);

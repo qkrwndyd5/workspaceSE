@@ -58,17 +58,13 @@ public class AccountService {
 	 * 0.계좌데이타를 인자로받아서 Account[]에추가[OPTION]
 	*/
 	public void addAccount(int no,String owner,int balance,double iyul) {
-		/*
-		 * 1.배열크기증가
-		 *   - 기존배열보다큰배열생성
-		 *   - 기존데이타 옮김
-		 */
+		
 	}
 	/*
 	 1.은행계좌들 총계좌수출력메쏘드정의
 	 */
 	public void totAccountNumberPrint() {
-		
+		System.out.println("은행계좌 총계좌수:"+this.accounts.length);
 	}
 	/*
 	 * 2.은행계좌들 전체출력메쏘드 정의
