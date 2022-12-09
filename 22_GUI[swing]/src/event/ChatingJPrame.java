@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ChatingJPrame extends JFrame {
 
@@ -42,7 +44,18 @@ public class ChatingJPrame extends JFrame {
 	 * Create the frame.
 	 */
 	public ChatingJPrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.out.println("windowClosing");
+				/*
+				exit = Terminates the currently running Java Virtual Machine.
+				 */
+				System.exit(0);
+				
+			}
+		});
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 393, 491);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,6 +76,19 @@ public class ChatingJPrame extends JFrame {
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		
 		chatTf = new JTextField();
+		chatTf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+					/*
+					 * frame의 TextField와 TextArea에 접근해야함
+					 */
+					String chatStr=chatTf.getText();
+					chatTf.setText("");
+					chatTa.append(chatStr+"\n");
+					chatTf.requestFocus();
+				
+			}
+		});
 		panel_1.add(chatTf);
 		chatTf.setColumns(23);
 		
@@ -74,8 +100,9 @@ public class ChatingJPrame extends JFrame {
 		panel_1.add(sendBtn);
 		
 		chatTa = new JTextArea();
+		chatTa.setEditable(false);
 		
-		chatTa.setText("이따만나\r\n알겠어!");
+		chatTa.setText("이따만나\r\n알겠어!\n");
 		contentPane.add(chatTa, BorderLayout.CENTER);
 		
 		/*
@@ -85,6 +112,24 @@ public class ChatingJPrame extends JFrame {
 				new ChatSendButtonActionEventHandler();
 		sendBtn.addActionListener(handler);
 		
+	}//생성자
+	
+	/*************Inner class***************/
+	public class ChatSendButtonActionEventHandler 
+	implements ActionListener{
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("send button click~~");
+		/*
+		 * frame의 TextField와 TextArea에 접근해야함
+		 */
+		String chatStr=chatTf.getText();
+		chatTf.setText("");
+		chatTa.append(chatStr+"\n");
+		chatTf.requestFocus();
 	}
+
+}
 
 }

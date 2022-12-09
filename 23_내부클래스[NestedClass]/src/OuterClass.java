@@ -12,6 +12,18 @@ public class OuterClass {
 		System.out.println("OuterClass.member_method()");		
 	}
 	
+	/**********OuterClass에서 InnerClass객체생성사용***********/
+	public void outer_inner_class_use() {
+		//OuterClass.InnerClass ic=new OuterClass.InnerClass();
+		InnerClass ic=new InnerClass();
+		ic.inner_member_filed=121212;
+		ic.inner_member_method();
+		System.out.println(ic);
+	}
+	
+	
+	
+	
 	/*
 	 * 인스턴스 멤버클래스(Nested class, Inner class)
 	 * 	  - 작성이유 : 내부클래스에서 외부클래스의 맴버접근을 손쉽게하기위해서작성
