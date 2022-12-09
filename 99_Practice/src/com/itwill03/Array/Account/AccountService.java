@@ -51,6 +51,18 @@ public class AccountService {
 		 *   - 기존배열보다큰배열생성
 		 *   - 기존데이타 옮김
 		 */
+		Account[] tempAccount = new Account[accounts.length+1];
+		for (int i = 0; i < accounts.length; i++) {
+			tempAccount[i] = accounts[i];			
+		}
+		for (int i = 0; i < tempAccount.length; i++) {
+			if(tempAccount[i] == null) {
+				tempAccount[i] = newAccount;
+				accounts = tempAccount;
+				}
+			accounts[i].print();
+		}
+		
 	}
 	
 	/*

@@ -1,6 +1,8 @@
 package com.itwill05.service.student.ui;
 
-public class StudentServiceArrayFrameMain {
+import javax.swing.JFrame;
+
+public class StudentServiceArrayFrameMain extends JFrame{
 
 	
 
