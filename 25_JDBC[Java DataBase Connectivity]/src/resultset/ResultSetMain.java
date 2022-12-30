@@ -5,16 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 
-import dao.comm.DataSource;
-/*
- 이름         널?       유형            
----------- -------- ------------- 
-NO         NOT NULL NUMBER(7)     
-NAME                VARCHAR2(50)  
-SHORT_DESC          VARCHAR2(255) 
-PRICE               NUMBER(10,3)  
-IPGO_DATE           DATE          
- */
+import dao.common.DataSource;
 
 public class ResultSetMain {
 
@@ -75,7 +66,17 @@ public class ResultSetMain {
 		rs.close();
 		
 		System.out.println("----------ResultSet.getString(\"컬럼이름\")-----------");
+		rs=pstmt.executeQuery();
 		
+		while(rs.next()) {
+			String noStr = rs.getString("no");
+			String name = rs.getString("name");
+			String short_desc = rs.getString("short_desc");
+			String priceStr = rs.getString("price");
+			String ipgo_dateStr = rs.getString("ipgo_date");
+			System.out.println(noStr+"\t"+name+"\t"+short_desc+"\t"+priceStr+"\t"+ipgo_dateStr);
+		}
+		rs.close();
 		
 		dataSource.close(con);
 	}

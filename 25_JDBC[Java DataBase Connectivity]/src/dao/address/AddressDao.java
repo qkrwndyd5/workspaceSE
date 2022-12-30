@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.comm.DataSource;
+import dao.common.DataSource;
 
 /*
  * DAO(Data Access Object) 클래스
@@ -22,7 +22,7 @@ public class AddressDao {
 	 */
 	private DataSource dataSource;
 	
-	public AddressDao() {
+	public AddressDao() throws Exception{
 		/*
 		 * dataSource멤버필드 초기화
 		 */
