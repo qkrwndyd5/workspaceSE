@@ -14,11 +14,14 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
@@ -73,6 +76,8 @@ public class MemberMainFrame extends JFrame {
 	private JButton updateBTN;
 	private JTable memberListTB;
 	private JButton memberDeleteBTN;
+	private JList memberListLt;
+	private JComboBox memberListCB;
 
 	/**
 	 * Launch the application.
@@ -498,17 +503,17 @@ public class MemberMainFrame extends JFrame {
 		});
 		scrollPane.setViewportView(memberListTB);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"김김김", "강강강", "박박박", "이이이", "최최최"}));
-		comboBox.setBounds(174, 202, 175, 23);
-		MemberadminPanel.add(comboBox);
+		memberListCB = new JComboBox();
+		memberListCB.setModel(new DefaultComboBoxModel(new String[] {"김김김", "강강강", "박박박", "이이이", "최최최"}));
+		memberListCB.setBounds(174, 202, 175, 23);
+		MemberadminPanel.add(memberListCB);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(22, 202, 107, 172);
 		MemberadminPanel.add(scrollPane_1);
 		
-		JList list = new JList();
-		list.setModel(new AbstractListModel() {
+		memberListLt = new JList();
+		memberListLt.setModel(new AbstractListModel() {
 			String[] values = new String[] {"김김김", "강강강", "박박박", "이이이", "최최최", "김김김", "강강강", "박박박", "이이이", "최최최", "김김김", "강강강", "박박박"};
 			public int getSize() {
 				return values.length;
@@ -517,7 +522,7 @@ public class MemberMainFrame extends JFrame {
 				return values[index];
 			}
 		});
-		scrollPane_1.setViewportView(list);
+		scrollPane_1.setViewportView(memberListLt);
 		
 		JButton memberListBTN = new JButton("회원리스트보기");
 		memberListBTN.addActionListener(new ActionListener() {
@@ -558,10 +563,10 @@ public class MemberMainFrame extends JFrame {
 	
 	/********************************************/
 	private void displayMemberList() {
-	/*************회원리스트보기*************/
+	
 	try {
 		List<Member> memberList = memberService.memberList();
-		
+		/*************회원리스트보기*************/
 		Vector columVector = new Vector();
 		columVector.add("아이디");
 		columVector.add("패스워드");
@@ -590,6 +595,19 @@ public class MemberMainFrame extends JFrame {
 		
 		memberListTB.setModel(tableModel);
 		memberDeleteBTN.setEnabled(false);
+		
+		/***************회원리스트보기[JList]****************/
+		DefaultListModel listModel = new DefaultListModel();
+		for(Member member:memberList) {
+			listModel.addElement(member.getM_id());
+		}
+		
+		memberListLt.setModel(listModel);
+		/***************회원리스트보기[JCombobox]************/
+		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+		for(Member member:memberList) {
+			comboBoxModel.addElement(member.getM_name()+"["+member.getM_id()+"]");
+		}
 		
 		
 	}catch(Exception e1) {
