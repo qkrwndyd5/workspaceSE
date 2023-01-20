@@ -1,3 +1,4 @@
+
 package com.itwill.shop.ui;
 
 import javax.swing.JPanel;
@@ -30,3 +31,4 @@ public class MemberJoinPanel extends JPanel {
 
 	}
 }
+

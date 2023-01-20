@@ -1,3 +1,4 @@
+
 package com.itwill.shop.ui;
 
 import java.awt.EventQueue;
@@ -90,3 +91,4 @@ public class ShopMainFrame extends javax.swing.JFrame {
 	}
 
 }
+
