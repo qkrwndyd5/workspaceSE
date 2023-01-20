@@ -15,11 +15,11 @@ public class ForGuguDan {
 		 */
 		for(int i=1;i<=9;i++) {
 			for(int j=2;j<=9;j++) {
-				System.out.printf("2*1=2\t");
+				System.out.printf(j+"*"+i+"="+j*i+"\t");
 				
 			}
 			
-			System.out.print("\n");
+			System.out.println();
 		}
 
 	}
